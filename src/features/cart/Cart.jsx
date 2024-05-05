@@ -5,13 +5,12 @@ import EmptyCart from './EmptyCart'
 import { useDispatch, useSelector } from 'react-redux';
 import { getCart, clearCart } from './cartSlice';
 
-
 function Cart() {
-  const cart = useSelector(getCart);
   const username = useSelector((state) => state.user.username);
+  const cart = useSelector(getCart); 
   const dispatch = useDispatch()
 
-  if(!cart.length) return <EmptyCart />
+  if (!cart.length) return <EmptyCart />
 
   return (
     <div className="px-4 py-3">
@@ -21,7 +20,7 @@ function Cart() {
 
       <ul className="mt-3 divide-y divide-stone-200 border-b">
         {cart.map((item) => (
-          <CartItem item={item} key={item.id} />
+          <CartItem item={item} key={item.pizzaId} />
         ))}
       </ul>
 
